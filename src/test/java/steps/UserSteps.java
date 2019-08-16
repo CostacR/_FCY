@@ -54,4 +54,9 @@ public class UserSteps extends ScenarioSteps {
         Thread.sleep(500);
     }
 
+    @Step
+    public void addOrder(){
+
+    }
+
 }
