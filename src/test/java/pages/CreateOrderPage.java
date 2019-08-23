@@ -5,8 +5,9 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
+//
 //НАДО БУДЕТ ПРИ НАПИСАНИИ ТЕСТОВ ПЕРЕПРОВЕРИТЬ КОРРЕКТНОСТЬ XPATH-ов  СО СТЕПЕРА "ОСНОВНАЯ ИНФОРМАЦИЯ" И ДАЛЕЕ.
+//
 
 public class CreateOrderPage extends PageObject {
 

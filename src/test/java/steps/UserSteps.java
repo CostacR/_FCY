@@ -75,7 +75,6 @@ public class UserSteps extends ScenarioSteps {
         createOrderPage.clientAdressRusConfirm(clientAdressRus);
         Thread.sleep(500);
         System.out.println("check 4");
-
     }
 
     @Step

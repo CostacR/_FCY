@@ -1,6 +1,4 @@
 package pages;
-
-
 import net.thucydides.core.pages.PageObject;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
