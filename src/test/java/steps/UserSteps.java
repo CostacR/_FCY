@@ -53,7 +53,7 @@ public class UserSteps extends ScenarioSteps {
     @Step
     public void addPaymentOrderButtonClickTest() throws InterruptedException {
         mainPage.addPaymentOrderButtonClick();
-        Thread.sleep(500);
+        Thread.sleep(300);
     }
 
     @Step
@@ -64,9 +64,17 @@ public class UserSteps extends ScenarioSteps {
     @Step
     public void addOrder(String clientNumName, String clientAdressEng, String clientAdressRus) throws InterruptedException {
         createOrderPage.searchClient(clientNumName);
-        Thread.sleep(100);
+        Thread.sleep(300);
+        System.out.println("check 1");
+//        createOrderPage.checkboxRusVClickTest();//нет id
+        Thread.sleep(200);
+        System.out.println("check 2");
         createOrderPage.clientAdressEngConfirm(clientAdressEng);
+        Thread.sleep(500);
+        System.out.println("check 3");
         createOrderPage.clientAdressRusConfirm(clientAdressRus);
+        Thread.sleep(500);
+        System.out.println("check 4");
 
     }
 

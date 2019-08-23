@@ -56,19 +56,14 @@ public class FcyLoginTest extends BaseTest {
         Thread.sleep(400);
         user.menuButtonClick();//button close menu
 
+
         System.out.println("add order");
         user.addPaymentOrderButtonClickTest();
-        user.nextStep();
+        Thread.sleep(500);
         user.addOrder(clientNumName, clientAdressEng, clientAdressRus);
+
+        Thread.sleep(500);
         user.nextStep();
-
-
-
-
-
-
-
-
 
         //wait after test's end
         Thread.sleep(400000);

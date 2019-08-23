@@ -67,7 +67,7 @@ public class CreateOrderPage extends PageObject {
     //*[@id='mat-input-77']
     private WebElement clientEngAdressField;
 
-    @FindBy (xpath = "//input[@id='mat-checkbox-13-input']")
+    @FindBy (xpath = "//*[@id='mat-checkbox-6']/label/span/text()")
     private WebElement checkboxVRus;
 
     @FindBy (xpath = "//*[@id='mat-input-65']")
@@ -277,6 +277,11 @@ public class CreateOrderPage extends PageObject {
 
     }
 
+    public void checkboxRusVClickTest() throws InterruptedException {
+        checkboxVRus.click();
+        Thread.sleep(200);
+        checkboxVRus.click();
+    }
     public void clientAdressEngConfirm(String clientAdressEng) throws InterruptedException {
         clientEngAdressField.click();
         clientEngAdressField.sendKeys(clientAdressEng);
