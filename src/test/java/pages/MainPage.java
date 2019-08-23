@@ -9,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends PageObject {
 
-    @FindBy (xpath = "//div[@class='headerBackgroud headerPosition']//button")
+    @FindBy (xpath = "/html/body/app-root/div/app-header/header/div[1]/button")//need id
     private WebElement hideMenuButton;
 
-    @FindBy (xpath = "//div//button[@id='b_payment_order']")
+    @FindBy (xpath = "//div/*[@id='b_payment_order']")
     private WebElement addPaymentOrderButton;
 
     @FindBy(xpath = "//div//button[@id='b_all_payment_order']")

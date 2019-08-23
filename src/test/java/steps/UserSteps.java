@@ -3,12 +3,14 @@ package steps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import pages.CreateOrderPage;
 import pages.LoginPage;
 import pages.MainPage;
 
 public class UserSteps extends ScenarioSteps {
     private LoginPage loginPage;
     private MainPage mainPage;
+    private CreateOrderPage createOrderPage;
 
     @Step
     public void openLoginPage(){
@@ -55,8 +57,21 @@ public class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void addOrder(){
+    public void nextStep(){
+        createOrderPage.nextStepButtonClick();
+    }
+
+    @Step
+    public void addOrder(String clientNumName, String clientAdressEng, String clientAdressRus) throws InterruptedException {
+        createOrderPage.searchClient(clientNumName);
+        Thread.sleep(100);
+        createOrderPage.clientAdressEngConfirm(clientAdressEng);
+        createOrderPage.clientAdressRusConfirm(clientAdressRus);
 
     }
 
+    @Step
+    public void selectClientStep(){
+
+    }
 }
