@@ -3,17 +3,19 @@ package steps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import pages.CreateOrderPage;
-import pages.LoginPage;
-import pages.MainPage;
+import pages.*;
 
 public class UserSteps extends ScenarioSteps {
     private LoginPage loginPage;
     private MainPage mainPage;
-    private CreateOrderPage createOrderPage;
+    private ClientSelectStep createOrderPage;
+    private MainInformationStep mainInformationStep;
+    private ContractorStep contractorStep;
+    private PreviewPageStep previewPageStep;
 
     @Step
     public void openLoginPage(){
+        System.out.println("Open login page");
         loginPage.open();
     }
     @Step
@@ -22,6 +24,7 @@ public class UserSteps extends ScenarioSteps {
     }
     @Step
     public void checkLoginTitle(){
+        System.out.println("Logging");
         loginPage.getTitle();
 
 
@@ -33,7 +36,7 @@ public class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void menuButtonClick() throws InterruptedException {
+    public void nideMenuButtonClick() throws InterruptedException {
         mainPage.hideMenuButtonClick();
     }
 
@@ -52,33 +55,62 @@ public class UserSteps extends ScenarioSteps {
 
     @Step
     public void addPaymentOrderButtonClickTest() throws InterruptedException {
+        System.out.println("add order");
         mainPage.addPaymentOrderButtonClick();
         Thread.sleep(300);
     }
 
     @Step
     public void nextStep(){
-        createOrderPage.nextStepButtonClick();
-    }
 
-    @Step
-    public void addOrder(String clientNumName, String clientAdressEng, String clientAdressRus) throws InterruptedException {
-        createOrderPage.searchClient(clientNumName);
-        Thread.sleep(300);
-        System.out.println("check 1");
-//        createOrderPage.checkboxRusVClickTest();//нет id
-        Thread.sleep(200);
-        System.out.println("check 2");
-        createOrderPage.clientAdressEngConfirm(clientAdressEng);
-        Thread.sleep(500);
-        System.out.println("check 3");
-        createOrderPage.clientAdressRusConfirm(clientAdressRus);
-        Thread.sleep(500);
-        System.out.println("check 4");
+        createOrderPage.nextStepButtonClick();
     }
 
     @Step
     public void selectClientStep(){
 
+    }
+
+    public void showSwift() {
+    }
+
+    public void orderDetails() {
+    }
+
+    public void menuButtonClick() {
+        mainPage.menuButtonClick();
+    }
+
+    @Step
+    public void addOrder(String clientNumName, String clientEngName, String clientAdressEng, String clientRusName, String clientAdressRus) throws InterruptedException {
+        createOrderPage.searchClient(clientNumName);
+        Thread.sleep(300);
+        System.out.println("Create order");
+//        createOrderPage.checkboxRusVClickTest();//нет id
+        Thread.sleep(200);
+        System.out.println("Select client");
+        createOrderPage.clientNameEngConfirm(clientEngName);
+        createOrderPage.clientAdressEngConfirm(clientAdressEng);
+//        createOrderPage.clientNameRusConfirm(clientRusName);
+//        createOrderPage.clientAdressRusConfirm(clientAdressRus);
+
+    }
+
+    @Step
+    public void addMainInformations(String numberOrder, String orderIBANnumber, String sumOrder) throws InterruptedException {
+        System.out.println("Main informations");
+        mainInformationStep.mainInformationsFillForm(numberOrder, orderIBANnumber, sumOrder);
+    }
+
+    public void addContractor() throws InterruptedException {
+        System.out.println("add Contractor ");
+        contractorStep.contractorNewFillForm();
+        contractorStep.addContractorBankDetailsButtonClick();
+        contractorStep.searchContractroBankDetail();
+    }
+
+    public void addContractorBySearch() throws InterruptedException {
+        System.out.println("add by search");
+        contractorStep.contractorSearchFillForm();
     }
 }

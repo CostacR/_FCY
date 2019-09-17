@@ -16,7 +16,9 @@ public class FcyLoginTest extends BaseTest {
                 //{"Client", "NewOrder","CategoryOrder", "TypeOrder","NumberOrder","StartDateOrder","FinistDateOrder","CurrensyOrder","IBAN","SumOrder","CommisionOrder","TergetOrder","TypeOperation","CodeRisk","","","","","","","","","","","","","","",""},//данные для dataProvider Controller
                 //{"clientSelectSlider", "mainInformationSlider", "contractorSlider", "orderPreviewSlider", "clientSearchInputForm", "searchButton", "clientDropMenu", "draftOrderSaveButton", "previousStepButton", "nextStepButton", "saveOrderButton", "exitButton", "clientInputForm", "clientSelectDropMenu", "clientEngNameField", "clientEngAdressField", "clientRusNameField", "clientRusAdressField", "clientContactPersonNameField", "clientContactPersonPhoneField", "newOrderDropMenu", "categoryOrderDropMenu", "typeOrderDropMenu", "numberOrderInputForm", "orderStartedDateField", "orderFinishedDateField", "currencyOrderDropMenu", "clientIBANField", "clientRegionField", "clientBankDivisionField", "clientBankMFOField", "orderSumField", "commisionOrderDropMenu", "targetPperationDropMenu", "operationTypeDropMenu", "indexRiskDropMenu", "addContractorButton", "contractorNameField", "contractorCountryDropMenu", "contractorCodeField", "contractorSearchButton", "contractorSearchDropMenu", "newContractorButton", "nextStepContractorButton", "previousStepContractorButton", "cancelContractorButton", "contractorNameInputForm", "contractorCodeForm", "contractorAdressInputForm", "newContractorCountryDropMenu", "contractorResidentDropMenu", "addContractorBankDetailsButton", "newContractorBankDetailsButton", "searchContractorField", "searchContractorButton", "contractorDetailsSelectDropMenu", "searchContractorBankButton", "saveDetailsButton", "cancelDetailsButton", "contractorSwiftCodeInputForm", "contractorBankNameInputForm", "contractorBankAdressInputForm", "contractorCliringCodeForm", "contractorBankCountryDropMenu", "contractorIbanInputForm", "contractorCorrespondingAccountRuInputForm", "exitOrderButton",}
 //                {"clientSearchInputForm", "searchButton", "clientDropMenu", "draftOrderSaveButton", "previousStepButton", "nextStepButton", "saveOrderButton", "exitButton", "clientInputForm", "clientSelectDropMenu", "clientEngNameField", "clientEngAdressField", "clientRusNameField", "clientRusAdressField", "clientContactPersonNameField", "clientContactPersonPhoneField", "newOrderDropMenu", "categoryOrderDropMenu", "typeOrderDropMenu", "numberOrderInputForm", "orderStartedDateField", "orderFinishedDateField", "currencyOrderDropMenu", "clientIBANField", "clientRegionField", "clientBankDivisionField", "clientBankMFOField", "orderSumField", "commisionOrderDropMenu", "targetPperationDropMenu", "operationTypeDropMenu", "indexRiskDropMenu", "addContractorButton", "contractorNameField", "contractorCountryDropMenu", "contractorCodeField", "contractorSearchButton", "contractorSearchDropMenu", "newContractorButton", "nextStepContractorButton", "previousStepContractorButton", "cancelContractorButton", "contractorNameInputForm", "contractorCodeForm", "contractorAdressInputForm", "newContractorCountryDropMenu", "contractorResidentDropMenu", "addContractorBankDetailsButton", "newContractorBankDetailsButton", "searchContractorField", "searchContractorButton", "contractorDetailsSelectDropMenu", "searchContractorBankButton", "saveDetailsButton", "cancelDetailsButton", "contractorSwiftCodeInputForm", "contractorBankNameInputForm", "contractorBankAdressInputForm", "contractorCliringCodeForm", "contractorBankCountryDropMenu", "contractorIbanInputForm", "contractorCorrespondingAccountRuInputForm", "exitOrderButton",},//данные для dataProvider Controller
-                {"","","3","Eng String adress", "Строка адреса на русском"},//если выдает ошибку "Wrong number argument" - значит не хватает данных в датапровайдере
+                {"login","password","11111111","Eng_name_ltd","Eng String adress", "рус_название_ООО", "Строка адреса на русском","Договор №1","IBAN1234456789","10000.99"
+                        //,"","","","","",""//раскрывать аргуменнтов данных ровно по числу переменных!!!!
+                        },//если выдает ошибку "Wrong number argument" - значит не хватает данных в датапровайдере
 
 //                {"", ""},//данные для dataProvider Supervisor
 //                {"", ""},//данные для dataProvider adminFCY
@@ -25,47 +27,72 @@ public class FcyLoginTest extends BaseTest {
 
     private String login;
     private String password;
+
+    //блок Вибір клієнта
     private String clientNumName;
     private String clientAdressEng;
+    private String clientEngName;
     private String clientAdressRus;
+    private String clientRusName;
 
-    public FcyLoginTest(String login, String password, String clientNumName, String clientAdressEng, String clientAdressRus) {
+    //блок Основна інформація
+    private String numberOrder;
+    private String orderIBANnumber;
+    private String sumOrder;
+
+    public FcyLoginTest(String login, String password, String clientNumName, String clientAdressEng, String clientEngName, String clientAdressRus, String clientRusName, String numberOrder, String orderIBANnumber, String sumOrder) {
         this.login = login;
         this.password = password;
         this.clientNumName = clientNumName;
         this.clientAdressEng = clientAdressEng;
+        this.clientEngName = clientEngName;
         this.clientAdressRus = clientAdressRus;
+        this.clientRusName = clientRusName;
+        this.numberOrder = numberOrder;
+        this.orderIBANnumber = orderIBANnumber;
+        this.sumOrder = sumOrder;
     }
 
+//    @Test
+//    public void showHideOrderButtonTest() throws InterruptedException {
+//        user.openLoginPage();
+//        Thread.sleep(500);
+//        user.checkLoginTitle();
+//        user.controllerButtonClick();
+//        Thread.sleep(400);
+//
+//        System.out.println("Hide menu button");
+//        user.nideMenuButtonClick();//button open menu
+//        Thread.sleep(400);
+//        user.nideMenuButtonClick();//button close menu
+//    }
 
     @Test
     public void successfulControllerTest() throws InterruptedException {
 
-
-        System.out.println("Open login page");
         user.openLoginPage();
         Thread.sleep(500);
-        System.out.println("Logging");
         user.checkLoginTitle();
         user.controllerButtonClick();
         Thread.sleep(400);
 
-        System.out.println("Hide menu button");
-        user.menuButtonClick();//button open menu
-        Thread.sleep(400);
-        user.menuButtonClick();//button close menu
+        user.menuButtonClick();
 
 
-        System.out.println("add order");
-        user.addPaymentOrderButtonClickTest();
         Thread.sleep(500);
-        user.addOrder(clientNumName, clientAdressEng, clientAdressRus);
+        user.addPaymentOrderButtonClickTest();
+        user.addOrder(clientNumName, clientEngName, clientAdressEng, clientRusName,  clientAdressRus);
 
         Thread.sleep(500);
         user.nextStep();
+        user.addMainInformations(numberOrder, orderIBANnumber, sumOrder);
+        user.nextStep();
+//        user.addContractor(); //создание нового контрагента
+        user.addContractorBySearch();
+        user.nextStep();
 
         //wait after test's end
-        Thread.sleep(400000);
+        Thread.sleep(4000000);
 
     }
 

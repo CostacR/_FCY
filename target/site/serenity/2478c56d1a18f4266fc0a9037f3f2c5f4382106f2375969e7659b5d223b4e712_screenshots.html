@@ -128,7 +128,7 @@
             <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
         </li>
     </ul>
-    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 23-08-2019 16:02</span>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated 17-09-2019 12:58</span>
     <br style="clear:left"/>
 </div>
 
@@ -181,7 +181,7 @@
 
     <div class="story-title">
         <h3>Scenario:</h3>
-        <div class="scenario">Open login page<br>Check login title<br>Controller button click<br>Menu button click<br>Menu button click<br>Add payment order button click test<br>Add order: &lt;Parameter 3&gt;, &lt;Parameter 4&gt;, &lt;Parameter 5&gt;</div>
+        <div class="scenario">Open &lt;Parameter 1&gt; page<br>Check &lt;Parameter 1&gt; title<br>Controller button click<br>Add payment order button click test<br>Add order: &lt;Parameter 3&gt;, &lt;Parameter 5&gt;, &lt;Parameter 4&gt;, &lt;Parameter 7&gt;, &lt;Parameter 6&gt;<br>Next step<br>Add main informations: &lt;Parameter 8&gt;, &lt;Parameter 9&gt;, &lt;Parameter 10&gt;<br>Next step<br>Add contractor by search<br>Next step</div>
     </div>
 
     <div id="beforetable"></div>
@@ -192,7 +192,7 @@
         <div class="table">
             <div class="row">
                 <div class="col-sm-10" style="padding-left:1.5em; padding-top:0.5em; padding-bottom:0.5em;">
-                    <span class="error-message error-message-title">No such element exception: Timed out after 2 seconds. Element not found</span>
+                    <span class="error-message error-message-title">Element not interactable exception: element not interactable</span>
                 </div>
                 <div class="col-sm-2">
                     <a class="btn btn-warning details-button" data-toggle="collapse" href="#stacktraceModal-overall""
@@ -208,11 +208,11 @@
         <div class="collapse multi-collapse" id="stacktraceModal-overall">
             <div class="card">
                 <div class="card-header">
-                    <h4>org.openqa.selenium.NoSuchElementException </h4>
+                    <h4>org.openqa.selenium.ElementNotInteractableException </h4>
                 </div>
                 <div class="card-body">
                     <div>
-                        <pre>pages.CreateOrderPage.clientAdressRusConfirm(CreateOrderPage.java:283)<br />steps.UserSteps.addOrder(UserSteps.java:64)<br />tests.FcyLoginTest.successfulControllerTest(FcyLoginTest.java:61)<br /></pre>
+                        <pre>pages.ContractorStep.contractorSearchFillForm(ContractorStep.java:271)<br />steps.UserSteps.addContractorBySearch(UserSteps.java:114)<br />tests.FcyLoginTest.successfulControllerTest(FcyLoginTest.java:91)<br /></pre>
                     </div>
 
                 </div>
@@ -222,21 +222,24 @@
 
 
                 <div class="panel-body">
-                    <a href="pagesource2897904825082751047.html.txt" target="_blank" class="btn btn-info">HTML Source</a>
+                    <a href="pagesource346230773165135107.html.txt" target="_blank" class="btn btn-info">HTML Source</a>
                 </div>
             </div>
         <div class="slider-wrapper theme-default">
             <div id="slider">
-                <img src="91b401ff201a2b8c0ce75f3a658b32100e19e5fb084f19a9738851897e64637b.png" title=" Successful controller test " width="929"/>
-                <img src="91b401ff201a2b8c0ce75f3a658b32100e19e5fb084f19a9738851897e64637b.png" title=" Open login page" width="929"/>
-                <img src="91b401ff201a2b8c0ce75f3a658b32100e19e5fb084f19a9738851897e64637b.png" title=" Check login title" width="929"/>
-                <img src="5bfbb249845737e2b4930bed74759be58edbbd3799f8c64cb474bbb806444841.png" title=" Controller button click" width="929"/>
-                <img src="a56540809d33022f3497988526c69e67d0a485a69732e34db9d5f7ccf874ecaa.png" title=" Menu button click" width="929"/>
-                <img src="b48710c2678aefc1eb26455c825af769702ef56fe2ffa478447e15e416d84122.png" title=" Menu button click (completed)" width="929"/>
-                <img src="d4f36c833e4e49a8f7e46c4ab8d59fdd605dfbae516f8f72926b1f2635e0279b.png" title=" Menu button click" width="929"/>
-                <img src="f1ff64183aa957a8f899754c26b26f4a58cc4a208ff2558a08936f1fdebb61dc.png" title=" Menu button click (completed)" width="929"/>
-                <img src="8f3a24b70ac973e8ab7664aea4537e1717f961a90bec201d2fbfc42747d24bac.png" title=" Add payment order button click test" width="929"/>
-                <img src="18052b9e01983767176ec0f9819e76d61416f6b0190d983bac638b596ee3e4a5.png" title=" Add order: 3, Eng String adress, Строка адреса на русском: <span class='error-color'>ERROR</span>" width="929"/>
+                <img src="d1002d6569eb95da96b1598d4b74df8d33cc2f04317f7fdb327a7f4e03dff37c.png" title=" Successful controller test " width="1920"/>
+                <img src="d1002d6569eb95da96b1598d4b74df8d33cc2f04317f7fdb327a7f4e03dff37c.png" title=" Open login page" width="1920"/>
+                <img src="e48db587bd194dfaa97620926358186f4d2736ad7c9c1a934fc0d73f4a472ceb.png" title=" Open login page (completed)" width="1920"/>
+                <img src="e48db587bd194dfaa97620926358186f4d2736ad7c9c1a934fc0d73f4a472ceb.png" title=" Check login title" width="1920"/>
+                <img src="ac2771152566d74227d59dd53dd5c59c24a2f5d8dfbba2bba5983e5639c9c1be.png" title=" Controller button click" width="1920"/>
+                <img src="a84b5171e234df88a2d30348109bdee9d6aacd3a04b254511c0ff86faacfc0b3.png" title=" Add payment order button click test" width="1920"/>
+                <img src="084a4adabf40bd9b3ea1a85b7382a5daeab52ab29b07aa9a3c3e7574995d48b6.png" title=" Add payment order button click test (completed)" width="1920"/>
+                <img src="2a4a4f9cc65d5b028c6f61d8f6c7c6d6256a1e677b2917cb9de22746fdf1c8e4.png" title=" Add order: 11111111, Eng String adress, Eng_name_ltd, Строка адреса на русском, рус_название_ООО" width="1920"/>
+                <img src="c462cdda3ce020c0270a6e75ba8bf5335b58cdc9952b89237dfc58cff26ec7c6.png" title=" Next step" width="1920"/>
+                <img src="8ea591a81b4050cd9d9ca203dace79337143170d8ff0c06d15f9a6b660f1c4dc.png" title=" Add main informations: Договор №1, IBAN1234456789, 10000.99" width="1920"/>
+                <img src="a51106f11ae375680c7e6f5cfae32d45595a22b0a8e6cf77eadb4982e7b9bb75.png" title=" Next step" width="1920"/>
+                <img src="4058f7219ee765fca6fcc110728d95e9908fa283d41a1c647927be5722c7e3d6.png" title=" Add contractor by search" width="1920"/>
+                <img src="4058f7219ee765fca6fcc110728d95e9908fa283d41a1c647927be5722c7e3d6.png" title=" Add contractor by search (completed): <span class='error-color'>ERROR</span>" width="1920"/>
             </div>
         </div>
 

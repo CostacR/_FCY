@@ -7,10 +7,15 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends PageObject {
 
+    //MainHeader
+
+    @FindBy (xpath = "//header/div/button//*[contains(text(), 'menu')]/ancestor::button")
+    private WebElement mainMenuButton;
+
     @FindBy (xpath = "/html/body/app-root/div/app-header/header/div[1]/button")//need id
     private WebElement hideMenuButton;
 
-    @FindBy (xpath = "//div/*[@id='b_payment_order']")
+    @FindBy (xpath = "//div//*[@id='b_payment_order']")
     private WebElement addPaymentOrderButton;
 
     @FindBy(xpath = "//div//button[@id='b_all_payment_order']")
@@ -43,4 +48,9 @@ public class MainPage extends PageObject {
         lookSwiftOrderButton.click();
     }
 
+    public void menuButtonClick() {
+        System.out.println("mainMenu click meth");
+        System.out.println(mainMenuButton.isEnabled());
+        mainMenuButton.click();
+    }
 }
