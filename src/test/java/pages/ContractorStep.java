@@ -198,31 +198,6 @@ public class ContractorStep extends PageObject {
 
     }
 
-    public void createNewContractor() throws InterruptedException {
-
-        newContractorButton.click();
-        Thread.sleep(50);
-        System.out.println("111");
-
-        contractorNameField.click();
-        contractorNameField.sendKeys("Contractor Name");
-
-        contractorCodeField.click();
-        contractorCodeField.sendKeys("100000001");
-
-        contractorCountryDropMenu.click();
-        contractorAlbanyCountrySelect.click();
-        contractorBankCountryInputDropMenu.sendKeys(Keys.ENTER);
-        contractorBankCountryInputDropMenu.sendKeys(Keys.TAB);
-
-        contractorAdressInputForm.click();
-        contractorAdressInputForm.sendKeys("Contractor adress line");
-
-        contractorResidentDropMenu.click();
-        contractorResidentNoDropMenu.click();
-
-
-}
 
     public void addContractorBankDetailsButtonClick (){
         addContractorBankDetailsButton.click();
@@ -230,8 +205,6 @@ public class ContractorStep extends PageObject {
 
     public void searchContractroBankDetail(){
         searchContractorBankButton.click();
-
-
     }
 
 
@@ -239,26 +212,31 @@ public class ContractorStep extends PageObject {
 
     }
 
-
-
-    public void contractorNewFillForm() throws InterruptedException {
+    public void contractorNewFillForm(String contractorName, String contractorTaxCode, String contractorAdress) throws InterruptedException {
         Thread.sleep(50);
-        System.out.println("Enter Add contractor method");
         addContractorButton.click();
-        createNewContractor();//create new Contractor
+        newContractorButton.click();
+        Thread.sleep(50);
+        contractorNameField.click();
+        contractorNameField.sendKeys(contractorName);
+        contractorCodeField.click();
+        contractorCodeField.sendKeys(contractorTaxCode);
+        contractorCountryDropMenu.click();
+        contractorAlbanyCountrySelect.click();
+        contractorBankCountryInputDropMenu.sendKeys(Keys.ENTER);
+        contractorBankCountryInputDropMenu.sendKeys(Keys.TAB);
+        contractorAdressInputForm.click();
+        contractorAdressInputForm.sendKeys(contractorAdress);
+        contractorResidentDropMenu.click();
+        contractorResidentNoDropMenu.click();
         nextStepContractorButton.click();
     }
 
     public void contractorSearchFillForm() throws InterruptedException{
-
         Thread.sleep(50);
         addContractorButton.click();
-
         Thread.sleep(200);
-
-        System.out.println("444");
         searchContractorButton.click();
-
         Thread.sleep(100);
         contractorSearchDropMenu.click();
         contractorSearchContractorFirstDropMenu.click();
@@ -267,27 +245,21 @@ public class ContractorStep extends PageObject {
         contractorResidentDropMenu.click();
         Thread.sleep(50);
         contractorResidentYesDropMenu.click();
-
         Thread.sleep(50);
         nextStepContractorButton.click();
         Thread.sleep(250);
         addContractorBankDetailsButton.click();
-
         Thread.sleep(200);
         searchContractorBankButton.click();
         Thread.sleep(150);
         contractorSearchBankDetailDropMemu.click();
         Thread.sleep(50);
-
         contractorSearchBankDetailDE8937DropMemu.click();
-
         Thread.sleep(250);
         saveDetailsButton.click();
         Thread.sleep(250);
         saveDetailsButton.click();
         Thread.sleep(200);
-
         nextStepContractorLastButton.click();
-
     }
 }

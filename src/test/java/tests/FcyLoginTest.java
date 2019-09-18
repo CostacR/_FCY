@@ -16,7 +16,8 @@ public class FcyLoginTest extends BaseTest {
                 //{"Client", "NewOrder","CategoryOrder", "TypeOrder","NumberOrder","StartDateOrder","FinistDateOrder","CurrensyOrder","IBAN","SumOrder","CommisionOrder","TergetOrder","TypeOperation","CodeRisk","","","","","","","","","","","","","","",""},//данные для dataProvider Controller
                 //{"clientSelectSlider", "mainInformationSlider", "contractorSlider", "orderPreviewSlider", "clientSearchInputForm", "searchButton", "clientDropMenu", "draftOrderSaveButton", "previousStepButton", "nextStepButton", "saveOrderButton", "exitButton", "clientInputForm", "clientSelectDropMenu", "clientEngNameField", "clientEngAdressField", "clientRusNameField", "clientRusAdressField", "clientContactPersonNameField", "clientContactPersonPhoneField", "newOrderDropMenu", "categoryOrderDropMenu", "typeOrderDropMenu", "numberOrderInputForm", "orderStartedDateField", "orderFinishedDateField", "currencyOrderDropMenu", "clientIBANField", "clientRegionField", "clientBankDivisionField", "clientBankMFOField", "orderSumField", "commisionOrderDropMenu", "targetPperationDropMenu", "operationTypeDropMenu", "indexRiskDropMenu", "addContractorButton", "contractorNameField", "contractorCountryDropMenu", "contractorCodeField", "contractorSearchButton", "contractorSearchDropMenu", "newContractorButton", "nextStepContractorButton", "previousStepContractorButton", "cancelContractorButton", "contractorNameInputForm", "contractorCodeForm", "contractorAdressInputForm", "newContractorCountryDropMenu", "contractorResidentDropMenu", "addContractorBankDetailsButton", "newContractorBankDetailsButton", "searchContractorField", "searchContractorButton", "contractorDetailsSelectDropMenu", "searchContractorBankButton", "saveDetailsButton", "cancelDetailsButton", "contractorSwiftCodeInputForm", "contractorBankNameInputForm", "contractorBankAdressInputForm", "contractorCliringCodeForm", "contractorBankCountryDropMenu", "contractorIbanInputForm", "contractorCorrespondingAccountRuInputForm", "exitOrderButton",}
 //                {"clientSearchInputForm", "searchButton", "clientDropMenu", "draftOrderSaveButton", "previousStepButton", "nextStepButton", "saveOrderButton", "exitButton", "clientInputForm", "clientSelectDropMenu", "clientEngNameField", "clientEngAdressField", "clientRusNameField", "clientRusAdressField", "clientContactPersonNameField", "clientContactPersonPhoneField", "newOrderDropMenu", "categoryOrderDropMenu", "typeOrderDropMenu", "numberOrderInputForm", "orderStartedDateField", "orderFinishedDateField", "currencyOrderDropMenu", "clientIBANField", "clientRegionField", "clientBankDivisionField", "clientBankMFOField", "orderSumField", "commisionOrderDropMenu", "targetPperationDropMenu", "operationTypeDropMenu", "indexRiskDropMenu", "addContractorButton", "contractorNameField", "contractorCountryDropMenu", "contractorCodeField", "contractorSearchButton", "contractorSearchDropMenu", "newContractorButton", "nextStepContractorButton", "previousStepContractorButton", "cancelContractorButton", "contractorNameInputForm", "contractorCodeForm", "contractorAdressInputForm", "newContractorCountryDropMenu", "contractorResidentDropMenu", "addContractorBankDetailsButton", "newContractorBankDetailsButton", "searchContractorField", "searchContractorButton", "contractorDetailsSelectDropMenu", "searchContractorBankButton", "saveDetailsButton", "cancelDetailsButton", "contractorSwiftCodeInputForm", "contractorBankNameInputForm", "contractorBankAdressInputForm", "contractorCliringCodeForm", "contractorBankCountryDropMenu", "contractorIbanInputForm", "contractorCorrespondingAccountRuInputForm", "exitOrderButton",},//данные для dataProvider Controller
-                {"login","password","11111111","Eng_name_ltd","Eng String adress", "рус_название_ООО", "Строка адреса на русском","Договор №1","IBAN1234456789","10000.99"
+                {"login","password","11111111","Eng_name_ltd","Eng String adress", "рус_название_ООО", "Строка адреса на русском"
+                        ,"Договор №1","IBAN1234456789","10000.99","01/02/2018","31/12/2020","USD"
                         //,"","","","","",""//раскрывать аргуменнтов данных ровно по числу переменных!!!!
                         },//если выдает ошибку "Wrong number argument" - значит не хватает данных в датапровайдере
 
@@ -25,22 +26,22 @@ public class FcyLoginTest extends BaseTest {
         });
     }
 
-    private String login;
+    private String login;//logging, neverusing
     private String password;
-
-    //блок Вибір клієнта
-    private String clientNumName;
+    private String clientNumName;//блок Вибір клієнта
     private String clientAdressEng;
     private String clientEngName;
     private String clientAdressRus;
     private String clientRusName;
-
-    //блок Основна інформація
-    private String numberOrder;
+    private String numberOrder;//блок Основна інформація
     private String orderIBANnumber;
     private String sumOrder;
+    private String startDate;
+    private String finishDate;
+    private String indexCurrency;
 
-    public FcyLoginTest(String login, String password, String clientNumName, String clientAdressEng, String clientEngName, String clientAdressRus, String clientRusName, String numberOrder, String orderIBANnumber, String sumOrder) {
+    public FcyLoginTest(String login, String password, String clientNumName, String clientAdressEng, String clientEngName, String clientAdressRus, String clientRusName
+            , String numberOrder, String orderIBANnumber, String sumOrder, String startDate, String finishDate, String indexCurrency) {
         this.login = login;
         this.password = password;
         this.clientNumName = clientNumName;
@@ -51,6 +52,9 @@ public class FcyLoginTest extends BaseTest {
         this.numberOrder = numberOrder;
         this.orderIBANnumber = orderIBANnumber;
         this.sumOrder = sumOrder;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
+        this.indexCurrency = indexCurrency;
     }
 
 //    @Test
@@ -85,11 +89,13 @@ public class FcyLoginTest extends BaseTest {
 
         Thread.sleep(500);
         user.nextStep();
-        user.addMainInformations(numberOrder, orderIBANnumber, sumOrder);
+        user.addMainInformations( numberOrder,  orderIBANnumber,  sumOrder,  startDate,  finishDate,  indexCurrency);
         user.nextStep();
 //        user.addContractor(); //создание нового контрагента
         user.addContractorBySearch();
         user.nextStep();
+        user.saveOrderPreviewPage();
+
 
         //wait after test's end
         Thread.sleep(4000000);

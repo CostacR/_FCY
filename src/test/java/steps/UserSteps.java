@@ -97,14 +97,14 @@ public class UserSteps extends ScenarioSteps {
     }
 
     @Step
-    public void addMainInformations(String numberOrder, String orderIBANnumber, String sumOrder) throws InterruptedException {
+    public void addMainInformations(String numberOrder, String orderIBANnumber, String sumOrder, String startDate, String finishDate, String indexCurrency) throws InterruptedException {
         System.out.println("Main informations");
-        mainInformationStep.mainInformationsFillForm(numberOrder, orderIBANnumber, sumOrder);
+        mainInformationStep.mainInformationsFillForm(numberOrder, orderIBANnumber, sumOrder,  startDate,  finishDate,  indexCurrency);
     }
 
-    public void addContractor() throws InterruptedException {
+    public void addContractor(String contractorName, String contractorTaxCode, String contractorAdress) throws InterruptedException {
         System.out.println("add Contractor ");
-        contractorStep.contractorNewFillForm();
+        contractorStep.contractorNewFillForm( contractorName,  contractorTaxCode,  contractorAdress);
         contractorStep.addContractorBankDetailsButtonClick();
         contractorStep.searchContractroBankDetail();
     }
@@ -112,5 +112,10 @@ public class UserSteps extends ScenarioSteps {
     public void addContractorBySearch() throws InterruptedException {
         System.out.println("add by search");
         contractorStep.contractorSearchFillForm();
+    }
+
+    public void saveOrderPreviewPage() throws InterruptedException {
+        System.out.println(88);
+        previewPageStep.saveOrder();
     }
 }

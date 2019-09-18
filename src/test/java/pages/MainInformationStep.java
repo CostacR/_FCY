@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.yecht.Data;
 
 public class MainInformationStep extends PageObject {
 
@@ -193,7 +194,7 @@ public class MainInformationStep extends PageObject {
     }
 
 
-    public void mainInformationsFillForm(String numberOrder, String orderIBANnumber, String sumOrder) throws InterruptedException {
+    public void mainInformationsFillForm(String numberOrder, String orderIBANnumber, String sumOrder, String startDate, String finishDate, String indexCurrency) throws InterruptedException {
         newOrderDropMenu.click();
         Thread.sleep(50);
         selectNewOrderInMenu.click();
@@ -211,26 +212,25 @@ public class MainInformationStep extends PageObject {
         numberOrderInputForm.sendKeys(numberOrder);
 
         orderStartedDateField.click();
-        orderStartedDateField.sendKeys("12/12/2018");
+        orderStartedDateField.sendKeys(startDate);
 
         orderFinishedDateField.click();
-        orderFinishedDateField.sendKeys("31/12/2019");
+        orderFinishedDateField.sendKeys(finishDate);
 
         currencyOrderDropMenu.click();
         currencyAEDOrderDropMenu.click();
         currencyRUBOrderDropMenu.click();
-        currencyInputFormOrderDropMenu.sendKeys("PYG");
+        currencyInputFormOrderDropMenu.sendKeys(indexCurrency);
         currencyInputFormOrderDropMenu.sendKeys(Keys.ENTER);
         currencyInputFormOrderDropMenu.sendKeys(Keys.TAB);
 
         Thread.sleep(100);
-        System.out.println("IBAN");
         clientIBANField.clear();
         clientIBANField.click();
-        clientIBANField.sendKeys("124578568923632");
+        clientIBANField.sendKeys(orderIBANnumber);
 
         orderSumField.click();
-        orderSumField.sendKeys("10000.87");
+        orderSumField.sendKeys(sumOrder);
 
         commisionOrderDropMenu.click();
         Thread.sleep(50);
