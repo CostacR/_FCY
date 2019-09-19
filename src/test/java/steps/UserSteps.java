@@ -109,7 +109,7 @@ public class UserSteps extends ScenarioSteps {
         System.out.println("add Contractor ");
         contractorStep.contractorNewFillForm( contractorName,  contractorTaxCode,  contractorAdress);
         contractorStep.addContractorBankDetailsButtonClick();
-        contractorStep.searchContractroBankDetail();
+        contractorStep.createContractroBankDetail();
     }
 
     public void addContractorBySearch() throws InterruptedException {

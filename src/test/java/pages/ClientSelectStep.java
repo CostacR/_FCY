@@ -2,17 +2,12 @@ package pages;
 
 import net.thucydides.core.pages.PageObject;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-//
-//НАДО БУДЕТ ПРИ НАПИСАНИИ ТЕСТОВ ПЕРЕПРОВЕРИТЬ КОРРЕКТНОСТЬ XPATH-ов  СО СТЕПЕРА "ОСНОВНАЯ ИНФОРМАЦИЯ" И ДАЛЕЕ.
-//
+
 
 public class ClientSelectStep extends PageObject {
-
 
     //слайдеры
     @FindBy (xpath = "//div//mat-step-header[@aria-posinset='1']")
@@ -72,14 +67,10 @@ public class ClientSelectStep extends PageObject {
     @FindBy (xpath = "//input[@formcontrolname='firstCtrlClientAddressRuss']")
     private WebElement clientRusAdressField;
 
-
-
     public ClientSelectStep(WebDriver driver){
         super(driver);
     }
 
-    //        Assert.assertTrue("addPaymentOrderButton is visible", addPaymentOrderButton.isDisplayed());
-    //методы Click по кнопкам
     public void draftOrderSaveButtonClick(){
         Assert.assertTrue("draftOrderSaveButton is visible",draftOrderSaveButton.isDisplayed());
         Assert.assertTrue("draftOrderSaveButton is enabled", draftOrderSaveButton.isEnabled());

@@ -1,6 +1,5 @@
 package pages;
 
-import com.ibm.icu.impl.UResource;
 import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +28,7 @@ public class ContractorStep extends PageObject {
     @FindBy (xpath = "//button//span[contains(text(), 'Попередній крок ')]")
     private WebElement previousStepButton;
 
-    @FindBy (xpath = "//span[contains(text(), 'Наступний крок')]/ancestor::button")
+    @FindBy (xpath = "(//span[contains(text(), 'Наступний крок')]/ancestor::button)[2]")
     private WebElement nextStepButton;
 
     @FindBy (xpath = "//button//span[contains(text(), 'Зберегти')]/ancestor::button")
@@ -77,11 +76,11 @@ public class ContractorStep extends PageObject {
     private WebElement contractorSearchContractorFirstDropMenu;
 
 
-    @FindBy (xpath = "//*[@class='mat-stroked-button mat-primary']//a[contains(text(), 'Створити контрагента')]")
+    @FindBy (xpath = "//*[@class='mat-stroked-button mat-primary']//a[contains(text(), 'Створити контрагента')]/ancestor::button")
     private WebElement newContractorButton;
 
     //кнопки меню контрагента
-    @FindBy (xpath = "//button[@class='mat-raised-button mat-accent ng-star-inserted']//*[contains(text(), 'Наступний крок')]")
+    @FindBy (xpath = "//button[@class='mat-raised-button mat-accent ng-star-inserted']//*[contains(text(), 'Наступний крок')]/ancestor::button")
     private WebElement nextStepContractorButton;
 
     @FindBy (xpath = "//button//*[contains(text(), 'Наступний крок')]")
@@ -99,7 +98,7 @@ public class ContractorStep extends PageObject {
     private WebElement contractorNameInputForm;
 
     @FindBy (xpath = "//input[@formcontrolname='thirdCtrlCounterpartyTaxCode']")
-    private WebElement contractorCodeForm;
+    private WebElement contractorTaxCodeForm;
 
     @FindBy (xpath = "//input[@formcontrolname='thirdCtrlCounterpartyAddress']")
     private WebElement contractorAdressInputForm;
@@ -118,7 +117,6 @@ public class ContractorStep extends PageObject {
 
     @FindBy (xpath = "//div/div/mat-option/span[contains(text(), 'розріз відсутній')]")
     private WebElement contractorResidentUnknownDropMenu;
-
 
     @FindBy (xpath = "//*/div/mat-card-content/div/button/span/a[contains(text(), 'Додати реквізити')]/ancestor::button")
     private WebElement addContractorBankDetailsButton;
@@ -188,6 +186,9 @@ public class ContractorStep extends PageObject {
     @FindBy (xpath = "//button/span[contains(text(), 'Вийти')]")
     private WebElement exitOrderButton;
 
+    @FindBy (xpath = "//*[@formcontrolname='isMediatorBank']//input")
+    private WebElement contractorMediatorBankCheckbox;
+
 
     public ContractorStep(WebDriver driver){
         super(driver);
@@ -214,24 +215,39 @@ public class ContractorStep extends PageObject {
 
     public void contractorNewFillForm(String contractorName, String contractorTaxCode, String contractorAdress) throws InterruptedException {
         Thread.sleep(50);
+        System.out.println(1);
         addContractorButton.click();
+        Thread.sleep(100);
+        System.out.println(2);
         newContractorButton.click();
-        Thread.sleep(50);
-        contractorNameField.click();
-        contractorNameField.sendKeys(contractorName);
-        contractorCodeField.click();
-        contractorCodeField.sendKeys(contractorTaxCode);
-        contractorCountryDropMenu.click();
-        contractorAlbanyCountrySelect.click();
-        contractorBankCountryInputDropMenu.sendKeys(Keys.ENTER);
-        contractorBankCountryInputDropMenu.sendKeys(Keys.TAB);
+        Thread.sleep(100);
+        System.out.println(3);
+        contractorNameInputForm.click();
+        contractorNameInputForm.sendKeys(contractorName);
+        contractorTaxCodeForm.click();
+        contractorTaxCodeForm.sendKeys(contractorTaxCode);
         contractorAdressInputForm.click();
         contractorAdressInputForm.sendKeys(contractorAdress);
         contractorResidentDropMenu.click();
-        contractorResidentNoDropMenu.click();
-        nextStepContractorButton.click();
+        Thread.sleep(50);
+        contractorResidentYesDropMenu.click();
+        newContractorCountryDropMenu.click();
+        Thread.sleep(50);
+        contractorBankCountryAlbanyDropMenu.click();
+        Thread.sleep(250);
+        nextStepButton.click();
+        Thread.sleep(50);
+        nextStepButton.click();
     }
 
+    public void newContractorFillForm() throws InterruptedException {
+        Thread.sleep(50);
+        addContractorButton.click();
+        Thread.sleep(200);
+
+        createContractroBankDetail();
+
+    }
     public void contractorSearchFillForm() throws InterruptedException{
         Thread.sleep(50);
         addContractorButton.click();
@@ -262,4 +278,28 @@ public class ContractorStep extends PageObject {
         Thread.sleep(200);
         nextStepContractorLastButton.click();
     }
+
+    public void createContractroBankDetail() throws InterruptedException {
+        Thread.sleep(100);
+        newContractorBankDetailsButton.click();
+        Thread.sleep(100);
+        contractorSwiftCodeInputForm.click();
+        contractorSwiftCodeInputForm.sendKeys("SWIFTCODE");
+        contractorBankNameInputForm.click();
+        contractorBankNameInputForm.sendKeys("Contractor New Bank NY");
+        contractorAdressInputForm.click();
+        contractorAdressInputForm.sendKeys("Contractors's adress");
+        contractorCliringCodeForm.click();
+        contractorCliringCodeForm.sendKeys("12345600009");
+        contractorIbanInputForm.click();
+        contractorIbanInputForm.sendKeys("33365479135");
+        contractorCorrespondingAccountRuInputForm.click();
+        contractorCorrespondingAccountRuInputForm.sendKeys("26000000262626");
+
+        contractorMediatorBankCheckbox.click();
+        Thread.sleep(50);
+        contractorMediatorBankCheckbox.click();
+
+    }
 }
+
