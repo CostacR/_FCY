@@ -77,47 +77,38 @@ public class FcyLoginTest extends BaseTest {
 //    }
 
     @Test
-    public void successfulControllerTest() throws InterruptedException {
+    public void newOrderSearchContractorTest() throws InterruptedException {
         user.openLoginPage();
-        Thread.sleep(500);
         user.checkLoginTitle();
         user.controllerButtonClick();
-        Thread.sleep(400);
         user.menuButtonClick();
-        Thread.sleep(500);
         user.addPaymentOrderButtonClickTest();
         user.addOrder(clientNumName, clientEngName, clientAdressEng, clientRusName,  clientAdressRus);
-        Thread.sleep(500);
         user.nextStep();
         user.addMainInformations( numberOrder,  orderIBANnumber,  sumOrder,  startDate,  finishDate,  indexCurrency);
         user.nextStep();
-//        user.addContractor(); //создание нового контрагента
         user.addContractorBySearch();
         user.nextStep();
         user.saveOrderPreviewPage();
-        Thread.sleep(4000000);
+        Thread.sleep(400);
     }
 
-//    @Test
-//    public void createNewOrderCreateContractor()throws InterruptedException {
-//        user.openLoginPage();
-//        Thread.sleep(500);
-//        user.checkLoginTitle();
-//        user.controllerButtonClick();
-//        Thread.sleep(400);
-//        user.menuButtonClick();
-//        Thread.sleep(500);
-//        user.addPaymentOrderButtonClickTest();
-//        user.addOrder(clientNumName, clientEngName, clientAdressEng, clientRusName,  clientAdressRus);
-//        Thread.sleep(500);
-//        user.nextStep();
-//        user.addMainInformations( numberOrder,  orderIBANnumber,  sumOrder,  startDate,  finishDate,  indexCurrency);
-//        user.nextStep();
-//        user.addContractor( contractorName,  contractorTaxCode,  contractorAdress);
-//        user.nextStep();
-//        user.saveOrderPreviewPage();
-//        Thread.sleep(4000000);
-//    }
+    @Test
+    public void newOrderCreateContractorTest() throws InterruptedException {
+        user.openLoginPage();
+        user.checkLoginTitle();
+        user.controllerButtonClick();
+        user.menuButtonClick();
+        user.addPaymentOrderButtonClickTest();
+        user.addOrder(clientNumName, clientEngName, clientAdressEng, clientRusName,  clientAdressRus);
+        user.nextStep();
+        user.addMainInformations( numberOrder,  orderIBANnumber,  sumOrder,  startDate,  finishDate,  indexCurrency);
+        user.nextStep();
+        user.addContractor( contractorName,  contractorTaxCode,  contractorAdress); //создание нового контрагента
+        user.nextStep();
+        user.saveOrderPreviewPage();
+        Thread.sleep(400);
+    }
 
 
 }

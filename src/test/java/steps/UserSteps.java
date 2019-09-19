@@ -23,7 +23,8 @@ public class UserSteps extends ScenarioSteps {
 
     }
     @Step
-    public void checkLoginTitle(){
+    public void checkLoginTitle() throws InterruptedException {
+        Thread.sleep(100);
         System.out.println("Logging");
         loginPage.getTitle();
 
@@ -56,13 +57,15 @@ public class UserSteps extends ScenarioSteps {
     @Step
     public void addPaymentOrderButtonClickTest() throws InterruptedException {
         System.out.println("add order");
+        Thread.sleep(500);
+
         mainPage.addPaymentOrderButtonClick();
         Thread.sleep(300);
     }
 
     @Step
-    public void nextStep(){
-
+    public void nextStep() throws InterruptedException {
+        Thread.sleep(500);
         createOrderPage.nextStepButtonClick();
     }
 
@@ -77,7 +80,9 @@ public class UserSteps extends ScenarioSteps {
     public void orderDetails() {
     }
 
-    public void menuButtonClick() {
+    public void menuButtonClick() throws InterruptedException {
+        Thread.sleep(400);
+
         mainPage.menuButtonClick();
     }
 

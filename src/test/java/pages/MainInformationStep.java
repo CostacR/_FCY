@@ -258,4 +258,61 @@ public class MainInformationStep extends PageObject {
         indexRiskInputDropMenu.sendKeys(Keys.TAB);
     }
 
+    public void mainInformationNewOrderSelect(){
+
+    }
+    public void mainInformationTransferOrderAnotherBankSelect(){
+
+    }
+
+    public void mainInformationsMinorSum (String numberOrder, String orderIBANnumber, String sumOrder, String startDate, String finishDate, String indexCurrency) throws InterruptedException {
+        newOrderDropMenu.click();
+        Thread.sleep(50);
+        selectNewOrderInMenu.click();
+
+        categoryOrderDropMenu.click();
+        Thread.sleep(50);
+        categoryOrderZEDDropMenu.click();
+
+        typeOrderDropMenu.click();
+        Thread.sleep(50);
+        typeOrderExportDropMenu.click();
+
+        minorSumCheckbox.click();
+
+        numberOrderInputForm.clear();
+        numberOrderInputForm.click();
+        numberOrderInputForm.sendKeys(numberOrder);
+
+        orderStartedDateField.click();
+        orderStartedDateField.sendKeys(startDate);
+
+        Thread.sleep(100);
+        clientIBANField.clear();
+        clientIBANField.click();
+        clientIBANField.sendKeys(orderIBANnumber);
+
+        targetOperationDropMenu.click();
+        Thread.sleep(50);
+        targetOperation101DropMenu.click();
+        targetOperation102DropMenu.click();
+        targetOperationInputDropMenu.click();
+        targetOperationInputDropMenu.sendKeys(Keys.ENTER);
+        targetOperationInputDropMenu.sendKeys(Keys.TAB);
+
+        operationTypeDropMenu.click();
+        Thread.sleep(50);
+        operationType1251DropMenu.click();
+        operationType1721DropMenu.click();
+        operationTypeInputDropMenu.sendKeys(Keys.ENTER);
+        operationTypeInputDropMenu.sendKeys(Keys.TAB);
+
+        indexRiskDropMenu.click();
+        Thread.sleep(50);
+        indexRisk11DropMenu.click();
+        indexRisk22DropMenu.click();
+        indexRiskInputDropMenu.sendKeys(Keys.ENTER);
+        indexRiskInputDropMenu.sendKeys(Keys.TAB);
+    }
+
 }
